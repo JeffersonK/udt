@@ -1,0 +1,22 @@
+C++ = g++
+
+DEBUG = 1
+STATIC = 0
+
+CCFLAGS = -I. -I../include -I../src
+LDFLAGS = -lstdc++ -lpthread -lssl -lcrypto -L. -L../lib
+
+ifeq ($(OSX), 1)
+   LIBPATH_NAME=DYLD_LIBRARY_PATH
+else
+   LIBPATH_NAME=LD_LIBRARY_PATH
+endif
+
+WARNING = -Wall -Wextra
+# -Werror -pedantic -Woverloaded-virtual -Wnon-virtual-dtor -Wcomment -Wstrict-null-sentinel -Wconversion -Wcast-align -Wcast-qual -Winit-self -Weffc++
+
+ifeq ($(DEBUG), 1)
+   CCFLAGS += -g -DDEBUG $(WARNING)
+else
+   CCFLAGS += -O3
+endif
