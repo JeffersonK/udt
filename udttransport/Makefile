@@ -16,7 +16,6 @@ libudttransport.a: $(OBJS)
 clean:
 	rm -f *.o *.so *.a
 
-#install:
-#	mkdir -p ../lib
-#	mv libudttransport.so libudttransport.a ../lib
+install:
+	export LD_LIBRARY_PATH=$(DIR):$$LD_LIBRARY_PATH
 
